@@ -1,0 +1,8 @@
+#!/bin/bash
+# Filename: review.sh
+# Author:   LIU Yang
+# Create Time: Wed Aug 21 00:02:38 HKT 2013
+# License:     LGPL v2.0+
+# Contact Me:  JeremyRobturtle@gmail.com
+# Brief: Call this script to review words
+./study.py -r

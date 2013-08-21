@@ -1,0 +1,8 @@
+# Filename: learn.sh
+# Author:   LIU Yang
+# Create Time: Thu Aug 22 00:29:38 HKT 2013
+# License:     LGPL v2.0+
+# Contact Me:  JeremyRobturtle@gmail.com
+# Brief: Learn new words
+
+./study.py
