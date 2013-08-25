@@ -8,9 +8,10 @@
 
 import shelve, cPickle
 import sys, getopt
-from config import DB_name
+from config import IBT_DB
+#from config import GRE_DB
 
-db_read = shelve.open(DB_name)
+db_read = shelve.open(IBT_DB)
 for index in sys.argv[1:]:
 	print db_read[index]
 	print

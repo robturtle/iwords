@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Filename: readwords.sh
+# Filename: readtoefl.sh
 # Author:   LIU Yang
 # Create Time: Sat Aug 17 20:15:44 HKT 2013
 # License:     LGPL v2.0+
@@ -7,7 +7,8 @@
 
 import fileinput, shelve
 import re, sys
-import config, word
+import word
+from config import IBT_DB
 
 wordbook = dict()
 partkeys = ['n.', 'v.', 'vt.', 'vi.', 'adj.', 'adv.', 'prep.', 'IDIOM',
@@ -74,13 +75,13 @@ for line in fileinput.input():
 	# End reading from file #
 
 # store into database
-word_db = shelve.open(config.DB_name)
+word_db = shelve.open(IBT_DB)
 for idx in wordbook:
 	word_db[idx] = wordbook[idx]
 word_db.close()
 
 if __name__ == '__main__':
-	db_in = shelve.open(config.DB_name)
+	db_in = shelve.open(IBT_DB)
 	for idx in db_in.keys():
 		print db_in[idx]
 	db_in.close()

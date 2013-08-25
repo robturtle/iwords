@@ -8,7 +8,7 @@
 
 import sys, random
 import json, shelve
-from config import wordbook_prefix, statfile, DB_name
+from config import wordbook_prefix, statfile
 
 # status datafield
 # part_count:  Count of learning units.

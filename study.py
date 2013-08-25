@@ -8,7 +8,6 @@
 
 import shelve, sys, getopt
 import wordlist, learn_interface
-from config import DB_name
 
 mode = 'learn'
 
@@ -21,7 +20,8 @@ for opt, value in opts:
         mode = 'review'
 
 # Prepare data
-db = shelve.open(DB_name)
+db_name = wordlist.stat['use_dict']
+db = shelve.open(db_name)
 wlist, partlist = wordlist.generate_wordlist(mode)
 
 # Start learning

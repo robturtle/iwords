@@ -5,6 +5,7 @@
 # License:     LGPL v2.0+
 # Contact Me:  JeremyRobturtle@gmail.com
 
-DB_name         = 'words.dat'
+GRE_DB        = 'gre.dat'
+IBT_DB        = 'toefl.dat'
 wordbook_prefix = '.wordbook'
 statfile        = 'status.json'

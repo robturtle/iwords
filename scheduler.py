@@ -8,9 +8,9 @@
 
 import shelve, cPickle
 import json
-from config import DB_name, wordbook_prefix, statfile
+from config import GRE_DB, IBT_DB, wordbook_prefix, statfile
 
-worddb = shelve.open(DB_name, 'w', writeback=True)
+worddb = shelve.open(GRE_DB, 'w', writeback=True)
 word_count = len(worddb.keys())
 
 def ask_choice(prompt, *valid_answers):
@@ -24,6 +24,14 @@ def ask_choice(prompt, *valid_answers):
 %s
 please try again!
 			''' % str(valid_answers)
+
+dictionary = {'1':IBT_DB, '2':GRE_DB}
+select_dict = """Which dictionary do you want to study?
+1 => Tofel Core Vocabularies
+2 => GRE Core Vocabularies
+"""
+dict_idx = ask_choice(select_dict, '1', '2')
+dict_    = dictionary[dict_idx]
 
 planmap = {'1':150, '2':300, '3':600}
 select_plan = """How many new words do you want to study per day?
@@ -67,6 +75,7 @@ longterm_interval = 30  # Review interval after process above
 
 schedule = file(statfile, 'w+')
 schedule_stat = {
+  'use_dict'          : dict_,
   'part_count'        : day_count,
   'current_no'        : 0,
   'have_learnt'       : False,

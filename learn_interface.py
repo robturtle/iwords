@@ -14,7 +14,6 @@ import os, sys
 
 import word
 import wordlist
-from config import DB_name
 from getch  import qgetch, stop_qgetch_str
 
 # word counts of round #? in words
