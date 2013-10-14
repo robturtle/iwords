@@ -72,6 +72,12 @@ def learn(DB, wlist):
                 study_word(DB, windex, learn_time)
                 if do_exit: return
 
+            shuffle(r1_wlist)
+            print '\n\n\rCycle 1 Review'
+            for windex in r1_wlist:
+                study_word(DB, windex, review_time)
+                if do_exit: return
+
         ## review r2 words
         shuffle(r2_wlist)
         print '\n\n\rCycle 2, NO. {0}'.format(i)
