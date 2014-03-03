@@ -37,7 +37,7 @@ planmap = {'1':150, '2':300, '3':600}
 select_plan = """How many new words do you want to study per day?
 1 => 150 words (If you got 2 Hours/day)
 2 => 300 words (If you got 4 Hours/day)
-3 => 600 words (If you've paid for the tofel exam in the next 2 week)
+3 => 600 words (If you have only 2 weeks)
 
 Press number(1-3) to confirm [3 for default]:
 """
