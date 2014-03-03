@@ -100,7 +100,7 @@ def review(DB, wlist):
     wordlist.writestat()
 
 
-study_prompt = '\r(<Space>: show meanings, <Enter>: next word) {0:3}: '
+study_prompt = '\r(<Space>: show meanings, <Enter>: next word, s: speech) {0:3}: '
 prompt_mask = '\r' + ' ' * len(study_prompt)
 
 def study_word(DB, windex, tick):
@@ -111,11 +111,12 @@ def study_word(DB, windex, tick):
 
     w = DB[windex]
     print '\n\n\r' + w.name
+    os.system("say {}".format(w.name))
 
     # Key press event handler
     queue = Queue()
     stop_keys  = ['\n', '\r', os.linesep, 'q']
-    valid_keys = stop_keys + [' ']
+    valid_keys = stop_keys + [' ', 's']
     keywatcher = Thread(target=qgetch, args=(queue, valid_keys, stop_keys))
     keywatcher.start()
 
@@ -132,15 +133,16 @@ def study_word(DB, windex, tick):
             keywatcher.join()
             do_exit = True
             return
-        # TODO elif ch == 'p': pronounce
-        elif (tick <= failtime or ch == ' ') and show_mean == False:
-            # indicate learner not familiar with this word
-            show_mean = True
-            w.priority += 1
-            DB[windex] = w # invoker is responsible to store DB
-            print prompt_mask,
-            print w.getmean()
-            print study_prompt.format(tick),
+        elif ch == 's': # Speech
+            os.system("say {}".format(w.name))
+            if (tick <= failtime or ch == ' ') and show_mean == False:
+                # indicate learner not familiar with this word
+                show_mean = True
+                w.priority += 1
+                DB[windex] = w # invoker is responsible to store DB
+                print prompt_mask,
+                print w.getmean()
+                print study_prompt.format(tick),
         else:
             print study_prompt.format(tick),
 
