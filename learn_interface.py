@@ -100,7 +100,7 @@ def review(DB, wlist):
     wordlist.writestat()
 
 
-study_prompt = '\r(<Space>: show meanings, <Enter>: next word, s: speech) {0:3}: '
+study_prompt = '\r(<Space>: show meanings, <Enter>: next word, s: speech, q: quit) {0:3}: '
 prompt_mask = '\r' + ' ' * len(study_prompt)
 
 def study_word(DB, windex, tick):
